@@ -7,31 +7,31 @@ class TextEditor {
     private Stack<String> redoStack = new Stack<>();
 
     public void write(String newText) {
-        undoStack.push(text);     // simpan kondisi sebelum menulis
-        redoStack.clear();        // redo tidak valid setelah write
-        text += newText;          // tambah teks baru
+        undoStack.push(text); 
+        redoStack.clear(); 
+        text += newText; 
     }
 
     public void undo() {
         if (undoStack.isEmpty()) {
-            System.out.println("Tidak ada yang bisa di-undo.");
+            System.out.println("tidak ada yang bisa di undo.");
             return;
         }
-        redoStack.push(text);     // simpan kondisi saat ini ke redo
-        text = undoStack.pop();   // kembali ke kondisi sebelumnya
+        redoStack.push(text);
+        text = undoStack.pop();  
     }
 
     public void redo() {
         if (redoStack.isEmpty()) {
-            System.out.println("Tidak ada yang bisa di-redo.");
+            System.out.println("tidak ada yang bisa di-redo.");
             return;
         }
-        undoStack.push(text);     // simpan kondisi sekarang
-        text = redoStack.pop();   // pulihkan kondisi lebih baru
+        undoStack.push(text);
+        text = redoStack.pop();
     }
 
     public void show() {
-        System.out.println("Isi Text Editor: " + text);
+        System.out.println("isi text editor : " + text);
     }
 }
 
@@ -47,13 +47,13 @@ public class Main {
             System.out.println("3. Redo");
             System.out.println("4. Show");
             System.out.println("5. Exit");
-            System.out.print("Pilih: ");
+            System.out.print("pilih: ");
             int pilihan = input.nextInt();
             input.nextLine();  
 
             switch (pilihan) {
                 case 1:
-                    System.out.print("Masukkan teks: ");
+                    System.out.print("Masukkan teks : ");
                     String t = input.nextLine();
                     editor.write(t);
                     break;
@@ -75,7 +75,7 @@ public class Main {
                     return;
 
                 default:
-                    System.out.println("Pilihan tidak valid!");
+                    System.out.println("pilihan tidak ada!");
             }
         }
     }
